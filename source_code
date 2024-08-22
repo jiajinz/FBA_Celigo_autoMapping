@@ -1,0 +1,51 @@
+import os
+import pandas as pd
+
+
+# Function to check if a file path exists
+def validate_path(path):
+    if not os.path.isfile(path):
+        print(f"Incorrect path: {path}")
+        return False
+    return True
+
+
+# Transfer order function to merge CSV files and alter the FBA CSV in place
+def merge_csv_inplace(FBA_path, Celigo_path):
+    # Load the FBA CSV, skipping the first 9 rows
+    df1 = pd.read_csv(FBA_path, skiprows=9)
+
+    # Load the Celigo CSV
+    df2 = pd.read_csv(Celigo_path)
+
+    # Merge df1 and df2 on 'SKU' from df1 and 'Name' from df2, left join in place
+    df1 = df1.merge(df2, left_on='SKU', right_on='Name', how='left')
+
+    # Rename 'Parent Item' to 'Item' in place
+    df1['Item'] = df1['Parent Item'].fillna('null')
+
+    # Rename 'Total units' to 'QTY' in place
+    df1['QTY'] = df1['Total units'].fillna('null')
+
+    # Select the relevant columns for the output
+    output_df = df1[['SKU', 'Item', 'QTY']]
+
+    # Overwrite the original FBA CSV file with the modified DataFrame
+    output_df.to_csv(FBA_path, index=False)
+
+
+# Main function to get user input
+def main():
+    FBA_path = input("Enter the path to the FBA CSV file: ")
+    Celigo_path = input("Enter the path to the Celigo CSV file: ")
+
+    # Validate paths
+    if validate_path(FBA_path) and validate_path(Celigo_path):
+        merge_csv_inplace(FBA_path, Celigo_path)
+        print(f'Success: The FBA CSV has been successfully updated: {FBA_path}')
+    else:
+        print("One or both paths are incorrect. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
