@@ -29,9 +29,10 @@ The merged data includes renaming the Parent Item column to Item and Total units
 ### Output:
 
 The program then selects the relevant columns (SKU, Item, QTY) and overwrites the original FBA CSV file with this newly merged and formatted data. This step ensures that your FBA shipment file is updated in place with the most accurate product alias information from Celigo.
+
 Completion: Once the process is complete, the program informs the user that the FBA CSV has been successfully updated.
 
 ## Customization:
-The source code provided above allows for easy customization. You can adjust column names, modify the merge logic, or expand the application to handle additional business logic specific to your workflow. This flexibility makes the application adaptable to various business needs, ensuring seamless integration between your NetSuite/Celigo system and Amazon FBA operations.
+The source code provided allows for easy customization. You can adjust column names, modify the merge logic, or expand the application to handle additional business logic specific to your workflow. This flexibility makes the application adaptable to various business needs, ensuring seamless integration between your NetSuite/Celigo system and Amazon FBA operations.
 
 
