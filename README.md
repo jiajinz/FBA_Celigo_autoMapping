@@ -8,7 +8,7 @@ pyinstaller --onefile script_name.py
 ## How the Program Works:
 CSV File Input: The application begins by prompting the user to input the file paths for two CSV files:
 
-FBA CSV: This file contains shipment details from Amazon Seller Central FBA.
+FBA CSV: This file contains shipment details from Amazon Seller Central FBA, orginal shippement detail file from Amazon, do not alter the file
 
 Celigo CSV: This file holds data from Celigo, particularly product aliases under the Name column.
 Validation: The program first checks whether the provided file paths are valid and whether the files exist. If any of the paths are incorrect, the program alerts the user and prompts them to try again. 
@@ -22,9 +22,11 @@ It then loads the Celigo CSV file to prepare for data merging.
 Merging Data:
 
 The application merges the two CSV files based on the SKU column from the FBA CSV and the Name column from the Celigo CSV. This left join ensures that every SKU in the FBA file is matched with its corresponding alias data from the Celigo file.
-Data Transformation:
+
+## Data Transformation:
 
 The merged data includes renaming the Parent Item column to Item and Total units to QTY. This renaming helps standardize the output, ensuring consistency with your data processing and reporting needs.
+
 Output:
 
 The program then selects the relevant columns (SKU, Item, QTY) and overwrites the original FBA CSV file with this newly merged and formatted data. This step ensures that your FBA shipment file is updated in place with the most accurate product alias information from Celigo.
