@@ -1,7 +1,11 @@
 # FBA_Celigo_autoMapping
 This application is tailored for small businesses that integrate Celigo and NetSuite with Amazon Seller Central for Fulfillment by Amazon (FBA) shipments. Its main purpose is to simplify the management of product aliases in FBA shipments and automate the repetitive task of manually inputting FBA transfer orders. Please note that the NetSuite CSV import mapping is not provided; this program is specifically designed to map the FBA CSV file to the corresponding NetSuite CSV import file. I also included the source code, if you would like to change things around.
 
-# How the Program Works:
+## how to use PyInstaller to create an executable from the Python script
+pyinstaller --onefile script_name.py
+
+
+## How the Program Works:
 CSV File Input: The application begins by prompting the user to input the file paths for two CSV files:
 
 FBA CSV: This file contains shipment details from Amazon Seller Central FBA.
@@ -28,3 +32,5 @@ Completion: Once the process is complete, the program informs the user that the 
 
 ## Customization:
 The source code provided above allows for easy customization. You can adjust column names, modify the merge logic, or expand the application to handle additional business logic specific to your workflow. This flexibility makes the application adaptable to various business needs, ensuring seamless integration between your NetSuite/Celigo system and Amazon FBA operations.
+
+
